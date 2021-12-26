@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import { message, Popconfirm, Table } from "antd";
 import React, { useEffect, useState } from "react";
 
 const Tools = () => {
@@ -26,13 +26,18 @@ const Tools = () => {
     {
       title: "",
       key: "action",
-      // render: (_text, record) => (
-      //   <Popconfirm title="Are you sure to delete this tool?" onConfirm={() => deleteTool(record.id)} okText="Yes" cancelText="No">
-      //     <a href="#" type="danger">
-      //       Delete{" "}
-      //     </a>
-      //   </Popconfirm>
-      // ),
+      render: (_text, record) => (
+        <Popconfirm 
+          title="Are you sure to delete this tool?" 
+          onConfirm={() => deleteTool(record.key)} 
+          okText="Yes" 
+          cancelText="No"
+        >
+          <a href="#" type="danger">
+            Delete{" "}
+          </a>
+        </Popconfirm>
+      ),
     },
   ];
 
@@ -43,7 +48,8 @@ const Tools = () => {
 
     data.forEach(tool => {
       const strippedTool = {
-        key: Math.random(),
+        key: tool.id,
+        id: tool.id,
         tooltype: tool.tooltype,
         diameter: tool.diameter,
         length: tool.length,
@@ -72,6 +78,29 @@ const Tools = () => {
         putData(data);
       })
       .catch((err) => console.log("Error: " + err));
+  };
+
+  const reloadTools = () => {
+    setTools([]);
+    loadTools();
+  };
+
+  const deleteTool = (id) => {
+    const url = `api/v1/tools/${id}`;
+
+    console.log(id);
+
+    fetch(url, {
+      method: "delete",
+    })
+      .then((data) => {
+        if (data.ok) {
+          reloadTools();
+          return data.json();
+        }
+        throw new Error("Network error.");
+      })
+      .catch((err) => message.error("Error: " + err));
   };
 
   useEffect(() => {

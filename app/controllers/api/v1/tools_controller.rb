@@ -1,5 +1,7 @@
 class Api::V1::ToolsController < ApplicationController
     before_action :set_tool, only: [:show, :edit, :update, :destroy]
+
+    skip_before_action :verify_authenticity_token
   
     # GET /tools
     # GET /tools.json
