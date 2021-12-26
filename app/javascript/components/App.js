@@ -1,10 +1,9 @@
 import React from "react";
 import "antd/dist/antd.css";
+import Router from "../routes";
 
 export default function App() {
     return (
-        <div>
-            <h1>HELLO TOOLS</h1>
-        </div>
+        <Router />
     );
 }
