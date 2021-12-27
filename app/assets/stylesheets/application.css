@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+
+ .site-layout-content {
+    background: #fff;
+    padding: 24px;
+    min-height: 380px;
+  }
+  
+  .logo {
+    width: 200px;
+    min-height: 100%;
+    margin-right: 50px;
+    float: left;
+    background-image: url('CNC-Logo.svg');
+    background-repeat: no-repeat;
+    background-position: 0 -3px;
+    background-size: cover;
+  }
+  
+  .table-striped-rows th,
+  .table-striped-rows td {
+    border-bottom: 1px solid #dedddd !important;
+  }
+  
+  .table-striped-rows tr:nth-child(2n) td {
+    background-color: #fbfbfb;
+  }
+  
+  .table-striped-rows thead {
+    background-color: #f1f1f1;
+  }
