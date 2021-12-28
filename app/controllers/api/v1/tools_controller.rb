@@ -2,7 +2,7 @@ class Api::V1::ToolsController < ApplicationController
     before_action :set_tool, only: [:show, :edit, :update, :destroy]
 
     skip_before_action :verify_authenticity_token
-  
+
     # GET /tools
     # GET /tools.json
     def index
@@ -27,13 +27,17 @@ class Api::V1::ToolsController < ApplicationController
   
     # GET /tools/1/edit
     def edit
+      if @tool
+        render json: @tool
+      else
+        render json: @tool.errors
+      end
     end
   
     # POST /tools
     # POST /tools.json
     def create
       @tool = Tool.new(tool_params)
-  
   
       if @tool.save
         render json: @tool
@@ -45,6 +49,9 @@ class Api::V1::ToolsController < ApplicationController
     # PATCH/PUT /tools/1
     # PATCH/PUT /tools/1.json
     def update
+      @tool.update(tool_params)
+
+      render json: { notice: 'Tool was successfully updated.' }
     end
   
     # DELETE /tools/1

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { message, Popconfirm, Table } from "antd";
 import AddToolModal from "./AddToolModal";
+import EditToolModal from "./EditToolModal";
 
 const Tools = () => {
   const columns = [
@@ -28,16 +29,19 @@ const Tools = () => {
       title: "",
       key: "action",
       render: (_text, record) => (
-        <Popconfirm
-          title="Are you sure to delete this tool?"
-          onConfirm={() => deleteTool(record.key)}
-          okText="Yes"
-          cancelText="No"
-        >
-          <a href="#" type="danger">
-            Delete{" "}
-          </a>
-        </Popconfirm>
+        <>
+          <Popconfirm
+            title="Are you sure to delete this tool?"
+            onConfirm={() => deleteTool(record.key)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <a href="#" className="delete-button">
+              Delete{" "}
+            </a>
+          </Popconfirm>
+          <EditToolModal reloadTools={reloadTools} id={record.key} />
+        </>
       ),
     },
   ];
@@ -95,7 +99,7 @@ const Tools = () => {
       .then((data) => {
         if (data.ok) {
           reloadTools();
-           
+
           return data.json();
         }
         throw new Error("Network error.");
@@ -106,10 +110,6 @@ const Tools = () => {
   useEffect(() => {
     loadTools();
   }, []);
-
-  useEffect(() => {
-    console.log(tools);
-  }, [tools]);
 
   return (
     <>

@@ -43,3 +43,26 @@
   .table-striped-rows thead {
     background-color: #f1f1f1;
   }
+
+  .delete-button {
+      color: crimson !important;
+  }
+
+  .delete-button:hover {
+      background-color: transparent !important;
+      filter: brightness(1.2);
+  }
+
+  .edit-button {
+    background-color: transparent;
+    border: none;
+    font-size: 13px;
+    color: #666;
+    margin-left: 24px;
+    box-shadow: none;
+  }
+
+  .edit-button:hover {
+      background-color: transparent;
+      border: none;
+  }

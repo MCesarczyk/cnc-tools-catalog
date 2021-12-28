@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'tools/index'
       post 'tools/create'
+      get 'tools/:id', to: 'tools#show'
+      get 'tools/:id', to: 'tools#edit'
+      put 'tools/:id', to: 'tools#update'
       delete 'tools/:id', to: 'tools#destroy'
     end
   end
