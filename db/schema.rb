@@ -10,15 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_26_003640) do
+ActiveRecord::Schema.define(version: 2022_01_17_122729) do
 
   create_table "tools", force: :cascade do |t|
     t.string "tooltype"
     t.integer "diameter"
     t.integer "length"
-    t.integer "quantity"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "corner_radius"
+    t.integer "flute_number"
+    t.integer "flute_length"
+    t.string "machine"
+    t.integer "number"
+    t.datetime "created_at", precision: 6
+    t.datetime "updated_at", precision: 6
   end
 
 end
