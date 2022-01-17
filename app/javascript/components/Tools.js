@@ -21,9 +21,29 @@ const Tools = () => {
       key: "length",
     },
     {
-      title: "Quantity",
-      dataIndex: "quantity",
-      key: "quantity",
+      title: "Corner radius",
+      dataIndex: "corner_radius",
+      key: "corner_radius",
+    },
+    {
+      title: "Flute number",
+      dataIndex: "flute_number",
+      key: "flute_number",
+    },
+    {
+      title: "Flute length",
+      dataIndex: "flute_length",
+      key: "flute_length",
+    },
+    {
+      title: "Machine",
+      dataIndex: "machine",
+      key: "machine",
+    },
+    {
+      title: "Number",
+      dataIndex: "number",
+      key: "number",
     },
     {
       title: "",
@@ -58,7 +78,11 @@ const Tools = () => {
         tooltype: tool.tooltype,
         diameter: tool.diameter,
         length: tool.length,
-        quantity: tool.quantity
+        corner_radius: tool.corner_radius,
+        flute_number: tool.flute_number,
+        flute_length: tool.flute_length,
+        machine: tool.machine,
+        number: tool.number,
       };
 
       array = [
