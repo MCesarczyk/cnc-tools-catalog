@@ -70,6 +70,6 @@ class Api::V1::ToolsController < ApplicationController
   
       # Only allow a list of trusted parameters through.
       def tool_params
-        params.permit(:tooltype, :diameter, :length, :quantity)
+        params.permit(:tooltype, :diameter, :length, :corner_radius, :flute_number, :flute_length, :machine, :number)
       end
   end

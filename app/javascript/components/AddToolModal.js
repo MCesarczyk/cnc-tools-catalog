@@ -66,8 +66,27 @@ const AddToolModal = ({ reloadTools }) => {
             <Input placeholder="Input your tool lentgh" />
           </Form.Item>
 
-          <Form.Item name="quantity" label="Quantity" rules={[{ required: true, message: "Please input the quantity!" }]}>
-            <Input type="number" placeholder="How many tools you desire?" />
+          <Form.Item name="corner_radius" label="Corner radius" rules={[{ required: true, message: "Please input the radius of the corner!", }]}>
+            <Input placeholder="Input your tool corner radius" />
+          </Form.Item>
+
+          <Form.Item name="flute_number" label="Flutes number" rules={[{ required: true, message: "Please input the number of the flutes!", }]}>
+            <Input placeholder="Input your tool flutes number" />
+          </Form.Item>
+
+          <Form.Item name="flute_length" label="Flute length" rules={[{ required: true, message: "Please input the length of the flute!", }]}>
+            <Input placeholder="Input your tool flute lentgh" />
+          </Form.Item>
+
+          <Form.Item name="machine" label="Machine" rules={[{ required: true, message: "Please choose a machine!" }]}>
+            <Select showSearch placeholder="Select your machine" optionFilterProp="children" style={{ width: "100%" }}>
+              <Option value="Juaristi">Juaristi</Option>
+              <Option value="Kekeisen">Kekeisen</Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item name="number" label="Number" rules={[{ required: true, message: "Please input the tool number!" }]}>
+            <Input type="number" placeholder="Input your tool number" />
           </Form.Item>
 
           <Form.Item>
