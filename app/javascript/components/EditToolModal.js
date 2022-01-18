@@ -1,29 +1,17 @@
+import React, { useState } from "react";
+import { useForm } from "antd/lib/form/Form";
+import { formatTool } from "../assets/utils/formatTool";
+import { machines, toolTypes } from "../assets/fixtures";
 import { Button, Form, Input, Modal, Select } from "antd";
-import React, { useRef, useState } from "react";
 
 const { Option } = Select;
 
 const EditToolModal = ({ reloadTools, id }) => {
-  const formRef = useRef(null);
+  const [form] = useForm();
   const [visible, setVisible] = useState(false);
   const [tool, setTool] = useState({});
 
-  const loadTool = (id) => {
-    const url = `api/v1/tools/${id}`;
-
-    fetch(url)
-      .then((data) => {
-        if (data.ok) {
-          return data.json();
-        }
-        throw new Error("Network error.");
-      })
-      .then(tool => setTool(tool))
-      .then(() => setVisible(true))
-      .catch((err) => message.error("Error: " + err));
-
-    return
-  };
+  const formattedTool = formatTool(tool);
 
   const showModal = () => {
     loadTool(id);
@@ -57,6 +45,23 @@ const EditToolModal = ({ reloadTools, id }) => {
       .catch((err) => console.error("Error: " + err));
   };
 
+  const loadTool = (id) => {
+    const url = `api/v1/tools/${id}`;
+
+    fetch(url)
+      .then((data) => {
+        if (data.ok) {
+          return data.json();
+        }
+        throw new Error("Network error.");
+      })
+      .then(tool => setTool(tool))
+      .then(() => setVisible(true))
+      .catch((err) => message.error("Error: " + err));
+
+    return;
+  };
+
   return (
     <>
       <Button className="edit-button" onClick={showModal}>
@@ -65,24 +70,18 @@ const EditToolModal = ({ reloadTools, id }) => {
 
       <Modal title="Edit Tool Data ..." visible={visible} onCancel={handleCancel} footer={null}>
         <Form
-          ref={formRef}
+          form={form}
           layout="vertical"
           onFinish={onFinish}
-          initialValues={{
-            tooltype: tool.tooltype,
-            diameter: tool.diameter,
-            length: tool.length,
-            quantity: tool.quantity
-          }}
+          initialValues={formattedTool}
         >
           <Form.Item name="tooltype" label="Type" rules={[{ required: true, message: "Please input your tool type!" }]}>
             <Select showSearch placeholder="Select your tool type" optionFilterProp="children" style={{ width: "100%" }}>
-              <Option value="Shell mill">Shell mill</Option>
-              <Option value="End mill">End mill</Option>
-              <Option value="Ball mill">Ball mill</Option>
-              <Option value="Spotdrill">Spotdrill</Option>
-              <Option value="Insert drill">Insert drill</Option>
-              <Option value="Tap">Tap</Option>
+              {toolTypes.map(tool => (
+                <Option key={tool.id} value={tool.name} >
+                  {tool.name}
+                </Option>
+              ))}
             </Select>
           </Form.Item>
 
@@ -94,8 +93,30 @@ const EditToolModal = ({ reloadTools, id }) => {
             <Input placeholder="Input your tool lentgh" />
           </Form.Item>
 
-          <Form.Item name="quantity" label="Quantity" rules={[{ required: true, message: "Please input the quantity!" }]}>
-            <Input type="number" placeholder="How many tools you desire?" />
+          <Form.Item name="corner_radius" label="Corner radius" rules={[{ required: true, message: "Please input the radius of the corner!", }]}>
+            <Input placeholder="Input your tool corner radius" />
+          </Form.Item>
+
+          <Form.Item name="flute_number" label="Flutes number" rules={[{ required: true, message: "Please input the number of the flutes!", }]}>
+            <Input placeholder="Input your tool flutes number" />
+          </Form.Item>
+
+          <Form.Item name="flute_length" label="Flute length" rules={[{ required: true, message: "Please input the length of the flute!", }]}>
+            <Input placeholder="Input your tool flute lentgh" />
+          </Form.Item>
+
+          <Form.Item name="machine" label="Machine" rules={[{ required: true, message: "Please choose a machine!" }]}>
+            <Select showSearch placeholder="Select your machine" optionFilterProp="children" style={{ width: "100%" }}>
+              {machines.map(machine => (
+                <Option key={machine.id} value={machine.name} >
+                  {machine.name}
+                </Option>
+              ))}
+            </Select>
+          </Form.Item>
+
+          <Form.Item name="number" label="Number" rules={[{ required: true, message: "Please input the tool number!" }]}>
+            <Input type="number" placeholder="Input your tool number" />
           </Form.Item>
 
           <Form.Item>

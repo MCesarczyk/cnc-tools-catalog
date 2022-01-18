@@ -49,7 +49,11 @@ const AddToolModal = ({ reloadTools }) => {
       </Button>
 
       <Modal title="Add New Tool ..." visible={visible} onCancel={handleCancel} footer={null}>
-        <Form form={form} layout="vertical" onFinish={onFinish}>
+        <Form
+          form={form}
+          layout="vertical"
+          onFinish={onFinish}
+        >
           <Form.Item name="tooltype" label="Type" rules={[{ required: true, message: "Please input your tool type!" }]}>
             <Select showSearch placeholder="Select your tool type" optionFilterProp="children" style={{ width: "100%" }}>
               {toolTypes.map(tool => (
