@@ -1,10 +1,11 @@
 import { Button, Form, Input, Modal, Select } from "antd";
-import React, { useRef, useState } from "react";
+import { useForm } from "antd/lib/form/Form";
+import React, { useState } from "react";
 
 const { Option } = Select;
 
 const AddToolModal = ({ reloadTools }) => {
-  const formRef = useRef(null);
+  const [form] = useForm();
   const [visible, setVisible] = useState(false);
 
   const showModal = () => {
@@ -35,6 +36,7 @@ const AddToolModal = ({ reloadTools }) => {
       })
       .then(() => {
         reloadTools();
+        form.resetFields();
       })
       .catch((err) => console.error("Error: " + err));
   };
@@ -46,7 +48,7 @@ const AddToolModal = ({ reloadTools }) => {
       </Button>
 
       <Modal title="Add New Tool ..." visible={visible} onCancel={handleCancel} footer={null}>
-        <Form ref={formRef} layout="vertical" onFinish={onFinish}>
+        <Form form={form} layout="vertical" onFinish={onFinish}>
           <Form.Item name="tooltype" label="Type" rules={[{ required: true, message: "Please input your tool type!" }]}>
             <Select showSearch placeholder="Select your tool type" optionFilterProp="children" style={{ width: "100%" }}>
               <Option value="Shell mill">Shell mill</Option>
