@@ -1,24 +1,7 @@
 import React from "react";
-import { Layout, Menu } from "antd";
 import { NavLink, useLocation } from "react-router-dom";
-
-const paths = [
-    {
-        key: 1,
-        path: "/",
-        name: "Home"
-    },
-    {
-        key: 2,
-        path: "/stock",
-        name: "Stock"
-    },
-    {
-        key: 3,
-        path: "/contact",
-        name: "Contact"
-    }
-];
+import { paths } from "../assets/paths";
+import { Layout, Menu } from "antd";
 
 const { Header } = Layout;
 

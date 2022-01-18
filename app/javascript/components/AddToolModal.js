@@ -1,6 +1,7 @@
-import { Button, Form, Input, Modal, Select } from "antd";
-import { useForm } from "antd/lib/form/Form";
 import React, { useState } from "react";
+import { useForm } from "antd/lib/form/Form";
+import { machines, toolTypes } from "../assets/fixtures";
+import { Button, Form, Input, Modal, Select } from "antd";
 
 const { Option } = Select;
 
@@ -51,12 +52,11 @@ const AddToolModal = ({ reloadTools }) => {
         <Form form={form} layout="vertical" onFinish={onFinish}>
           <Form.Item name="tooltype" label="Type" rules={[{ required: true, message: "Please input your tool type!" }]}>
             <Select showSearch placeholder="Select your tool type" optionFilterProp="children" style={{ width: "100%" }}>
-              <Option value="Shell mill">Shell mill</Option>
-              <Option value="End mill">End mill</Option>
-              <Option value="Ball mill">Ball mill</Option>
-              <Option value="Spotdrill">Spotdrill</Option>
-              <Option value="Insert drill">Insert drill</Option>
-              <Option value="Tap">Tap</Option>
+              {toolTypes.map(tool => (
+                <Option key={tool.id} value={tool.name} >
+                  {tool.name}
+                </Option>
+              ))}
             </Select>
           </Form.Item>
 
@@ -82,8 +82,11 @@ const AddToolModal = ({ reloadTools }) => {
 
           <Form.Item name="machine" label="Machine" rules={[{ required: true, message: "Please choose a machine!" }]}>
             <Select showSearch placeholder="Select your machine" optionFilterProp="children" style={{ width: "100%" }}>
-              <Option value="Juaristi">Juaristi</Option>
-              <Option value="Kekeisen">Kekeisen</Option>
+              {machines.map(machine => (
+                <Option key={machine.id} value={machine.name} >
+                  {machine.name}
+                </Option>
+              ))}
             </Select>
           </Form.Item>
 

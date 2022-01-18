@@ -1,50 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { message, Popconfirm, Table } from "antd";
 import AddToolModal from "./AddToolModal";
 import EditToolModal from "./EditToolModal";
+import { buildToolTable } from "../assets/utils/buildToolTable";
+import { toolListColumns } from "../assets/fixtures";
+import { message, Popconfirm, Table } from "antd";
 
 const Tools = () => {
   const columns = [
-    {
-      title: "Type",
-      dataIndex: "tooltype",
-      key: "tooltype",
-    },
-    {
-      title: "Diameter",
-      dataIndex: "diameter",
-      key: "diameter",
-    },
-    {
-      title: "Length",
-      dataIndex: "length",
-      key: "length",
-    },
-    {
-      title: "Corner radius",
-      dataIndex: "corner_radius",
-      key: "corner_radius",
-    },
-    {
-      title: "Flute number",
-      dataIndex: "flute_number",
-      key: "flute_number",
-    },
-    {
-      title: "Flute length",
-      dataIndex: "flute_length",
-      key: "flute_length",
-    },
-    {
-      title: "Machine",
-      dataIndex: "machine",
-      key: "machine",
-    },
-    {
-      title: "Number",
-      dataIndex: "number",
-      key: "number",
-    },
+    ...toolListColumns,
     {
       title: "",
       key: "action",
@@ -68,32 +31,6 @@ const Tools = () => {
 
   const [tools, setTools] = useState([]);
 
-  const putData = (data) => {
-    let array = [];
-
-    data.forEach(tool => {
-      const strippedTool = {
-        key: tool.id,
-        id: tool.id,
-        tooltype: tool.tooltype,
-        diameter: tool.diameter,
-        length: tool.length,
-        corner_radius: tool.corner_radius,
-        flute_number: tool.flute_number,
-        flute_length: tool.flute_length,
-        machine: tool.machine,
-        number: tool.number,
-      };
-
-      array = [
-        ...array,
-        strippedTool
-      ];
-
-      setTools(array);
-    })
-  };
-
   const loadTools = () => {
     const url = "api/v1/tools/index";
     fetch(url)
@@ -104,7 +41,8 @@ const Tools = () => {
         throw new Error("Network error.");
       })
       .then((data) => {
-        putData(data);
+        const toolTable = buildToolTable(data);
+        setTools(toolTable);
       })
       .catch((err) => console.log("Error: " + err));
   };
