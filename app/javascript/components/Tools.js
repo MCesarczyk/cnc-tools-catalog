@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import AddToolModal from "./AddToolModal";
-import EditToolModal from "./EditToolModal";
 import { buildToolTable } from "../assets/utils/buildToolTable";
 import { toolListColumns } from "../assets/fixtures";
+import ToolModal from "./ToolModal";
 import { message, Popconfirm, Table } from "antd";
 
 const Tools = () => {
@@ -23,7 +22,11 @@ const Tools = () => {
               Delete{" "}
             </a>
           </Popconfirm>
-          <EditToolModal reloadTools={reloadTools} id={record.key} />
+          <ToolModal
+            id={record.key}
+            type="edit"
+            reloadTools={reloadTools}
+          />
         </>
       ),
     },
@@ -81,7 +84,10 @@ const Tools = () => {
         columns={columns}
         pagination={{ pageSize: 5 }}
       />
-      <AddToolModal reloadTools={reloadTools} />
+      <ToolModal
+        type="add"
+        reloadTools={reloadTools}
+      />
     </>
   );
 };
