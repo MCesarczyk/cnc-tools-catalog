@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       delete 'tools/:id', to: 'tools#destroy'
 
       get 'articles/index'
+      delete 'articles/:id', to: 'articles#destroy'
     end
   end
   

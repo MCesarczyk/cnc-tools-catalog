@@ -47,7 +47,7 @@ class Api::V1::ArticlesController < ApplicationController
   def destroy
     @article.destroy
 
-    redirect json: { notice: 'Article was successfully removed.' }
+    render json: { notice: 'Article was successfully removed.' }
   end
 
   private

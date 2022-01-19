@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { buildArticleTable } from "../assets/utils/buildArticleTable";
 import { articleFormFields } from "../assets/fixtures";
-import { Table } from "antd";
+import { message, Popconfirm, Table } from "antd";
 
 const Articles = () => {
   const articleListColumns = articleFormFields.map(field => ({
@@ -12,7 +12,25 @@ const Articles = () => {
 
   const columns = [
     ...articleListColumns,
-    
+    {
+      title: "",
+      key: "action",
+      render: (_text, record) => (
+        <>
+          <Popconfirm
+            title="Are you sure to delete this article?"
+            onConfirm={() => deleteArticle(record.key)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <a href="#" className="delete-button">
+              Delete{" "}
+            </a>
+          </Popconfirm>
+        </>
+      ),
+    },
+
   ];
 
   const [articles, setArticles] = useState([]);
@@ -36,6 +54,23 @@ const Articles = () => {
   const reloadArticles = () => {
     setArticles([]);
     loadArticles();
+  };
+
+  const deleteArticle = (id) => {
+    const url = `api/v1/articles/${id}`;
+
+    fetch(url, {
+      method: "delete",
+    })
+      .then((data) => {
+        if (data.ok) {
+          reloadArticles();
+
+          return data.json();
+        }
+        throw new Error("Network error.");
+      })
+      .catch((err) => message.error("Error: " + err));
   };
 
   useEffect(() => {
