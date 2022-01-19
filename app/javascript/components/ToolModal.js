@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useForm } from "antd/lib/form/Form";
 import { formatTool } from "../assets/utils/formatTool";
 import { toolFormFields } from "../assets/fixtures";
-import { Button, Form, message, Modal } from "antd";
-import FormField from "./FormField";
+import { message } from "antd";
+import FormModal from "./FormModal";
 
 const ToolModal = ({ type, reloadTools, id }) => {
   const [form] = useForm();
@@ -84,47 +84,20 @@ const ToolModal = ({ type, reloadTools, id }) => {
   };
 
   return (
-    <>
-      <Button
-        type={type === "add" && "primary"}
-        className={type === "edit" && "edit-button"}
-        onClick={showModal}
-      >
-        {type === "edit" ? "Edit" : "Create New +"}
-      </Button>
-
-      <Modal
-        title={type === "edit" ? "Edit Tool Data ..." : "Add New Tool ..."}
-        visible={visible}
-        onCancel={handleCancel}
-        footer={null}
-      >
-        <Form
-          form={form}
-          layout="vertical"
-          onFinish={onFinish}
-          initialValues={formattedTool}
-        >
-          {toolFormFields.map(field =>
-            <FormField
-              key={field.name}
-              type={field.type}
-              name={field.name}
-              label={field.label}
-              message={field.message}
-              placeholder={field.placeholder}
-              optionFilterProp={field.optionFilterProp}
-              dataScope={field.dataScope}
-            />
-          )}
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
-      </Modal>
-    </>
+    <FormModal
+      form={form}
+      type={type}
+      editButtonMessage="Edit"
+      addButtonMessage="Create new +"
+      editFormMessage="Edit tools data &hellip;"
+      addFormMessage="Add new tool &hellip;"
+      showModal={showModal}
+      visible={visible}
+      handleCancel={handleCancel}
+      onFinish={onFinish}
+      initialValues={formattedTool}
+      formFields={toolFormFields}
+    />
   );
 }
 
