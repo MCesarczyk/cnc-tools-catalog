@@ -82,3 +82,78 @@ export const toolFormFields = [
     type: "number"
   }
 ];
+
+export const articleFormFields = [
+  {
+    name: "group",
+    label: "Group",
+    required: true,
+    message: "Please choose a group!",
+    placeholder: "Select article group ",
+    optionFilterProp: "",
+    type: ""
+  },
+  {
+    name: "subgroup",
+    label: "Subgroup",
+    required: true,
+    message: "Please choose a subgroup!",
+    placeholder: "Select article subgroup",
+    optionFilterProp: "",
+    type: ""
+  },
+  {
+    name: "article",
+    label: "Article",
+    required: true,
+    message: "Please provide an article!",
+    placeholder: "Provide an article name",
+    optionFilterProp: "",
+    type: "",
+  },
+  {
+    name: "manufacturer",
+    label: "Manufacturer",
+    required: true,
+    message: "Please choose a manufacturer!",
+    placeholder: "Enter manufacturer",
+    optionFilterProp: "",
+    type: "",
+  },
+  {
+    name: "description",
+    label: "Description",
+    required: true,
+    message: "Please provide a description!",
+    placeholder: "Enter description",
+    optionFilterProp: "",
+    type: "",
+  },
+  {
+    name: "catalog",
+    label: "Catalog",
+    required: true,
+    message: "Please choose a catalog!",
+    placeholder: "Select supplier catalog",
+    optionFilterProp: "",
+    type: "",
+  },
+  {
+    name: "quantity",
+    label: "Quantity",
+    required: true,
+    message: "Please enter quantity!",
+    placeholder: "Enter quantity",
+    optionFilterProp: "",
+    type: "",
+  },
+  {
+    name: "annotations",
+    label: "Annotations",
+    required: false,
+    message: "",
+    placeholder: "Feel free to write something down",
+    optionFilterProp: "",
+    type: "",
+  }
+];

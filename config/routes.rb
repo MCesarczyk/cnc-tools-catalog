@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       get 'tools/:id', to: 'tools#edit'
       put 'tools/:id', to: 'tools#update'
       delete 'tools/:id', to: 'tools#destroy'
+
+      get 'articles/index'
     end
   end
   
