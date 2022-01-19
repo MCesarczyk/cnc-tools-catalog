@@ -83,6 +83,15 @@ export const toolFormFields = [
   }
 ];
 
+export const articleGroups = [
+  { id: 1, name: "Tools"},
+  { id: 2, name: "Parts"},
+  { id: 3, name: "Jigs"},
+  { id: 4, name: "Materials"},
+  { id: 5, name: "Measuring"},
+  { id: 6, name: "Equipment"}
+];
+
 export const articleFormFields = [
   {
     name: "group",
@@ -90,8 +99,9 @@ export const articleFormFields = [
     required: true,
     message: "Please choose a group!",
     placeholder: "Select article group ",
-    optionFilterProp: "",
-    type: ""
+    optionFilterProp: "children",
+    type: "select",
+    dataScope: articleGroups
   },
   {
     name: "subgroup",
@@ -100,7 +110,8 @@ export const articleFormFields = [
     message: "Please choose a subgroup!",
     placeholder: "Select article subgroup",
     optionFilterProp: "",
-    type: ""
+    type: "",
+    // dataScope: articleSubgroups
   },
   {
     name: "article",
@@ -108,8 +119,7 @@ export const articleFormFields = [
     required: true,
     message: "Please provide an article!",
     placeholder: "Provide an article name",
-    optionFilterProp: "",
-    type: "",
+    type: "input",
   },
   {
     name: "manufacturer",
@@ -117,8 +127,7 @@ export const articleFormFields = [
     required: true,
     message: "Please choose a manufacturer!",
     placeholder: "Enter manufacturer",
-    optionFilterProp: "",
-    type: "",
+    type: "input",
   },
   {
     name: "description",
@@ -126,8 +135,7 @@ export const articleFormFields = [
     required: true,
     message: "Please provide a description!",
     placeholder: "Enter description",
-    optionFilterProp: "",
-    type: "",
+    type: "input",
   },
   {
     name: "catalog",
@@ -135,8 +143,7 @@ export const articleFormFields = [
     required: true,
     message: "Please choose a catalog!",
     placeholder: "Select supplier catalog",
-    optionFilterProp: "",
-    type: "",
+    type: "input",
   },
   {
     name: "quantity",
@@ -144,8 +151,7 @@ export const articleFormFields = [
     required: true,
     message: "Please enter quantity!",
     placeholder: "Enter quantity",
-    optionFilterProp: "",
-    type: "",
+    type: "number",
   },
   {
     name: "annotations",
@@ -153,7 +159,6 @@ export const articleFormFields = [
     required: false,
     message: "",
     placeholder: "Feel free to write something down",
-    optionFilterProp: "",
-    type: "",
+    type: "input",
   }
 ];

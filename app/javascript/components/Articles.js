@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { buildArticleTable } from "../assets/utils/buildArticleTable";
 import { articleFormFields } from "../assets/fixtures";
+import ArticleModal from "./ArticleModal";
 import { message, Popconfirm, Table } from "antd";
 
 const Articles = () => {
@@ -27,6 +28,11 @@ const Articles = () => {
               Delete{" "}
             </a>
           </Popconfirm>
+          <ArticleModal
+            id={record.key}
+            type="edit"
+            reloadArticles={reloadArticles}
+          />
         </>
       ),
     },
@@ -84,6 +90,10 @@ const Articles = () => {
         dataSource={articles}
         columns={columns}
         pagination={{ pageSize: 5 }}
+      />
+      <ArticleModal
+        type="add"
+        reloadArticles={reloadArticles}
       />
     </>
   );
