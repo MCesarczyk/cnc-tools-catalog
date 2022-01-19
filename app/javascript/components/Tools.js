@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { buildToolTable } from "../assets/utils/buildToolTable";
-import { toolListColumns } from "../assets/fixtures";
+import { toolFormFields } from "../assets/fixtures";
 import ToolModal from "./ToolModal";
 import { message, Popconfirm, Table } from "antd";
 
 const Tools = () => {
+  const toolListColumns = toolFormFields.map(field => ({
+    title: field.label,
+    dataIndex: field.name,
+    key: field.name
+  }));
+
   const columns = [
     ...toolListColumns,
     {
