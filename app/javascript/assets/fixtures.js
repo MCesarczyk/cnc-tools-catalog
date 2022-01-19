@@ -54,3 +54,74 @@ export const toolListColumns = [
     key: "number",
   }
 ];
+
+export const toolFormFields = [
+  {
+    name: "tooltype",
+    label: "Type",
+    required: true,
+    message: "Please input your tool type!",
+    placeholde: "Select your tool type",
+    optionFilterProp: "children",
+    type: "select",
+    dataScope: toolTypes
+  },
+  {
+    name: "diameter",
+    label: "Diameter",
+    required: true,
+    message: "Please input your tool diameter!",
+    placeholder: "Input your tool diameter",
+    type: "input"
+  },
+  {
+    name: "length",
+    label: "Length",
+    required: true,
+    message: "Please input the length of the tool!",
+    placeholder: "Input your tool lentgh",
+    type: "input"
+  },
+  {
+    name: "corner_radius",
+    label: "Corner radius",
+    required: true,
+    message: "Please input the radius of the corner!",
+    placeholder: "Input your tool corner radius",
+    type: "input"
+  },
+  {
+    name: "flute_number",
+    label: "Flutes number",
+    required: true,
+    message: "Please input the number of the flutes!",
+    placeholder: "Input your tool flutes number",
+    type: "input"
+  },
+  {
+    name: "flute_length",
+    label: "Flute length",
+    required: true,
+    message: "Please input the length of the flute!",
+    placeholder: "Input your tool flute lentgh",
+    type: "input"
+  },
+  {
+    name: "machine",
+    label: "Machine",
+    required: true,
+    message: "Please choose a machine!",
+    placeholder: "Select your machine",
+    optionFilterProp: "children",
+    type: "select",
+    dataScope: machines
+  },
+  {
+    name: "number",
+    label: "Number",
+    required: true,
+    message: "Please input the tool number!",
+    placeholder: "Input your tool number",
+    type: "number"
+  }
+];

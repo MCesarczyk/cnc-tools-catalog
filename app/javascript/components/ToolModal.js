@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useForm } from "antd/lib/form/Form";
 import { formatTool } from "../assets/utils/formatTool";
-import { machines, toolTypes } from "../assets/fixtures";
-import { Button, Form, Input, message, Modal, Select } from "antd";
-
-const { Option } = Select;
+import { toolFormFields } from "../assets/fixtures";
+import { Button, Form, message, Modal } from "antd";
+import FormField from "./FormField";
 
 const ToolModal = ({ type, reloadTools, id }) => {
   const [form] = useForm();
@@ -106,50 +105,18 @@ const ToolModal = ({ type, reloadTools, id }) => {
           onFinish={onFinish}
           initialValues={formattedTool}
         >
-          <Form.Item name="tooltype" label="Type" rules={[{ required: true, message: "Please input your tool type!" }]}>
-            <Select showSearch placeholder="Select your tool type" optionFilterProp="children" style={{ width: "100%" }}>
-              {toolTypes.map(tool => (
-                <Option key={tool.id} value={tool.name} >
-                  {tool.name}
-                </Option>
-              ))}
-            </Select>
-          </Form.Item>
-
-          <Form.Item name="diameter" label="Diameter" rules={[{ required: true, message: "Please input your tool diameter!" }]}>
-            <Input placeholder="Input your tool diameter" />
-          </Form.Item>
-
-          <Form.Item name="length" label="Length" rules={[{ required: true, message: "Please input the length of the tool!", }]}>
-            <Input placeholder="Input your tool lentgh" />
-          </Form.Item>
-
-          <Form.Item name="corner_radius" label="Corner radius" rules={[{ required: true, message: "Please input the radius of the corner!", }]}>
-            <Input placeholder="Input your tool corner radius" />
-          </Form.Item>
-
-          <Form.Item name="flute_number" label="Flutes number" rules={[{ required: true, message: "Please input the number of the flutes!", }]}>
-            <Input placeholder="Input your tool flutes number" />
-          </Form.Item>
-
-          <Form.Item name="flute_length" label="Flute length" rules={[{ required: true, message: "Please input the length of the flute!", }]}>
-            <Input placeholder="Input your tool flute lentgh" />
-          </Form.Item>
-
-          <Form.Item name="machine" label="Machine" rules={[{ required: true, message: "Please choose a machine!" }]}>
-            <Select showSearch placeholder="Select your machine" optionFilterProp="children" style={{ width: "100%" }}>
-              {machines.map(machine => (
-                <Option key={machine.id} value={machine.name} >
-                  {machine.name}
-                </Option>
-              ))}
-            </Select>
-          </Form.Item>
-
-          <Form.Item name="number" label="Number" rules={[{ required: true, message: "Please input the tool number!" }]}>
-            <Input type="number" placeholder="Input your tool number" />
-          </Form.Item>
-
+          {toolFormFields.map(field =>
+            <FormField
+              key={field.name}
+              type={field.type}
+              name={field.name}
+              label={field.label}
+              message={field.message}
+              placeholder={field.placeholder}
+              optionFilterProp={field.optionFilterProp}
+              dataScope={field.dataScope}
+            />
+          )}
           <Form.Item>
             <Button type="primary" htmlType="submit">
               Submit
