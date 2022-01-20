@@ -10,7 +10,8 @@ const Tools = () => {
     title: field.label,
     dataIndex: field.name,
     filters: field.filters || "",
-    onFilter: field.onFilter || ""
+    onFilter: field.onFilter || "",
+    sorter: field.sorter || ""
   }));
 
   const columns = [

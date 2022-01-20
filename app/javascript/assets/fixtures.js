@@ -34,7 +34,11 @@ export const toolFormFields = [
     required: true,
     message: "Please input your tool diameter!",
     placeholder: "Input your tool diameter",
-    type: "input"
+    type: "input",
+    sorter: {
+      compare: (a, b) => a.diameter - b.diameter,
+      multiple: 5
+    }
   },
   {
     name: "length",
@@ -42,7 +46,11 @@ export const toolFormFields = [
     required: true,
     message: "Please input the length of the tool!",
     placeholder: "Input your tool lentgh",
-    type: "input"
+    type: "input",
+    sorter: {
+      compare: (a, b) => a.length - b.length,
+      multiple: 4
+    }
   },
   {
     name: "corner_radius",
@@ -50,7 +58,11 @@ export const toolFormFields = [
     required: true,
     message: "Please input the radius of the corner!",
     placeholder: "Input your tool corner radius",
-    type: "input"
+    type: "input",
+    sorter: {
+      compare: (a, b) => a.corner_radius - b.corner_radius,
+      multiple: 3
+    }
   },
   {
     name: "flute_number",
@@ -58,7 +70,11 @@ export const toolFormFields = [
     required: true,
     message: "Please input the number of the flutes!",
     placeholder: "Input your tool flutes number",
-    type: "input"
+    type: "input",
+    sorter: {
+      compare: (a, b) => a.flute_number - b.flute_number,
+      multiple: 2
+    }
   },
   {
     name: "flute_length",
@@ -66,7 +82,11 @@ export const toolFormFields = [
     required: true,
     message: "Please input the length of the flute!",
     placeholder: "Input your tool flute lentgh",
-    type: "input"
+    type: "input",
+    sorter: {
+      compare: (a, b) => a.flute_length - b.flute_length,
+      multiple: 1
+    }
   },
   {
     name: "machine",
@@ -89,7 +109,11 @@ export const toolFormFields = [
     required: true,
     message: "Please input the tool number!",
     placeholder: "Input your tool number",
-    type: "number"
+    type: "number",
+    sorter: {
+      compare: (a, b) => a.number - b.number,
+      multiple: 6
+    }
   }
 ];
 
@@ -143,6 +167,10 @@ export const articleFormFields = [
     message: "Please choose a manufacturer!",
     placeholder: "Enter manufacturer",
     type: "input",
+    sorter: {
+      compare: (a, b) => a.manufacturer - b.manufacturer,
+      multiple: 3
+    }
   },
   {
     name: "description",
@@ -159,6 +187,10 @@ export const articleFormFields = [
     message: "Please choose a catalog!",
     placeholder: "Select supplier catalog",
     type: "input",
+    sorter: {
+      compare: (a, b) => a.catalog - b.catalog,
+      multiple: 2
+    }
   },
   {
     name: "quantity",
@@ -167,6 +199,10 @@ export const articleFormFields = [
     message: "Please enter quantity!",
     placeholder: "Enter quantity",
     type: "number",
+    sorter: {
+      compare: (a, b) => a.quantity - b.quantity,
+      multiple: 1
+    }
   },
   {
     name: "annotations",
