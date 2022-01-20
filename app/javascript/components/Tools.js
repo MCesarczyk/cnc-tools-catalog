@@ -6,9 +6,11 @@ import { message, Popconfirm, Table } from "antd";
 
 const Tools = () => {
   const toolListColumns = toolFormFields.map(field => ({
+    key: field.name,
     title: field.label,
     dataIndex: field.name,
-    key: field.name
+    filters: field.filters || "",
+    onFilter: field.onFilter || ""
   }));
 
   const columns = [
@@ -88,7 +90,8 @@ const Tools = () => {
         className="table-stripped-rows"
         dataSource={tools}
         columns={columns}
-        pagination={{ pageSize: 5 }}
+        pagination={{ pageSize: 10 }}
+        size="small"
       />
       <ToolModal
         type="add"

@@ -6,9 +6,11 @@ import { message, Popconfirm, Table } from "antd";
 
 const Articles = () => {
   const articleListColumns = articleFormFields.map(field => ({
+    key: field.name,
     title: field.label,
     dataIndex: field.name,
-    key: field.name
+    filters: field.filters || "",
+    onFilter: field.onFilter || ""
   }));
 
   const columns = [

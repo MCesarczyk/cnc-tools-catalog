@@ -21,7 +21,12 @@ export const toolFormFields = [
     placeholde: "Select your tool type",
     optionFilterProp: "children",
     type: "select",
-    dataScope: toolTypes
+    dataScope: toolTypes,
+    filters: toolTypes.map(type => ({
+      text: type.name,
+      value: type.name
+    })),
+    onFilter: (value, record) => record.tooltype.indexOf(value) === 0
   },
   {
     name: "diameter",
@@ -71,7 +76,12 @@ export const toolFormFields = [
     placeholder: "Select your machine",
     optionFilterProp: "children",
     type: "select",
-    dataScope: machines
+    dataScope: machines,
+    filters: machines.map(machine => ({
+      text: machine.name,
+      value: machine.name
+    })),
+    onFilter: (value, record) => record.machine.indexOf(value) === 0
   },
   {
     name: "number",
@@ -84,12 +94,12 @@ export const toolFormFields = [
 ];
 
 export const articleGroups = [
-  { id: 1, name: "Tools"},
-  { id: 2, name: "Parts"},
-  { id: 3, name: "Jigs"},
-  { id: 4, name: "Materials"},
-  { id: 5, name: "Measuring"},
-  { id: 6, name: "Equipment"}
+  { id: 1, name: "Tools" },
+  { id: 2, name: "Parts" },
+  { id: 3, name: "Jigs" },
+  { id: 4, name: "Materials" },
+  { id: 5, name: "Measuring" },
+  { id: 6, name: "Equipment" }
 ];
 
 export const articleFormFields = [
@@ -101,7 +111,12 @@ export const articleFormFields = [
     placeholder: "Select article group ",
     optionFilterProp: "children",
     type: "select",
-    dataScope: articleGroups
+    dataScope: articleGroups,
+    filters: articleGroups.map(group => ({
+      text: group.name,
+      value: group.name
+    })),
+    onFilter: (value, record) => record.group.indexOf(value) === 0
   },
   {
     name: "subgroup",
