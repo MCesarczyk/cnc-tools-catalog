@@ -1,17 +1,62 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { buildArticleTable } from "../assets/utils/buildArticleTable";
 import { articleFormFields } from "../assets/fixtures";
 import ArticleModal from "./ArticleModal";
-import { message, Popconfirm, Table } from "antd";
+import { Input, Button, Space, message, Popconfirm, Table } from "antd";
+import { SearchOutlined } from '@ant-design/icons';
+
+const getColumnSearchProps = (enabled, inputRef) => ({
+  filterIcon: (filtered) => enabled && <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />,
+  filterDropdown: () => (
+    enabled &&
+    <div style={{ padding: 8 }}>
+      <Input
+        ref={inputRef}
+        placeholder={`Search`}
+        style={{ marginBottom: 8, display: 'block' }}
+      />
+      <Space>
+        <Button
+          type="primary"
+          icon={<SearchOutlined />}
+          size="small"
+          style={{ width: 90 }}
+        >
+          Search
+        </Button>
+        <Button
+          size="small"
+          style={{ width: 90 }}
+        >
+          Reset
+        </Button>
+        <Button
+          type="link"
+          size="small"
+        >
+          Filter
+        </Button>
+      </Space>
+    </div>
+  ),
+  onFilterDropdownVisibleChange: visible => {
+    if (visible) {
+      setTimeout(() => inputRef.current.focus(), 300);
+    }
+  },
+});
 
 const Articles = () => {
+  const inputRef = useRef();
+
   const articleListColumns = articleFormFields.map(field => ({
     key: field.name,
     title: field.label,
     dataIndex: field.name,
     filters: field.filters || "",
     onFilter: field.onFilter || "",
-    sorter: field.sorter || ""
+    sorter: field.sorter || "",
+    ...getColumnSearchProps(field.search, inputRef)
   }));
 
   const columns = [

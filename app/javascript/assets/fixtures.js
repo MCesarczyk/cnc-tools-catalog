@@ -159,6 +159,7 @@ export const articleFormFields = [
     message: "Please provide an article!",
     placeholder: "Provide an article name",
     type: "input",
+    search: true
   },
   {
     name: "manufacturer",
@@ -179,6 +180,7 @@ export const articleFormFields = [
     message: "Please provide a description!",
     placeholder: "Enter description",
     type: "input",
+    search: true
   },
   {
     name: "catalog",
