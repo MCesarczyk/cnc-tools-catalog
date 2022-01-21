@@ -25,27 +25,18 @@ export const getColumnSearchProps = (enabled, inputRef, dataIndex) => {
     filterDropdown: ({ selectedKeys, setSelectedKeys, confirm, clearFilters }) => (
       enabled &&
       <div style={{ padding: 8 }}>
-        <Input
-          ref={inputRef}
-          placeholder={`Search ${dataIndex}`}
-          value={selectedKeys[0]}
-          onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-          style={{ marginBottom: 8, display: 'block' }}
-        />
         <Space>
+          <Input
+            ref={inputRef}
+            placeholder={`Search ${dataIndex}`}
+            value={selectedKeys[0]}
+            onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+            onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+            style={{ display: 'block' }}
+          />
           <Button
+            // size="small"
             type="primary"
-            onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
-            icon={<SearchOutlined />}
-            size="small"
-            style={{ width: 90 }}
-          >
-            {/* Search */}
-            Filter
-          </Button>
-          <Button
-            size="small"
             style={{ width: 90 }}
             onClick={() => handleReset(clearFilters, confirm)}
           >
