@@ -2,7 +2,7 @@ export const paths = [
   {
     key: 1,
     path: "/",
-    name: "Home"
+    name: "Tools"
   },
   {
     key: 2,

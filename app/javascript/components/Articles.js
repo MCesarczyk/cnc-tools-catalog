@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { buildArticleTable } from "../assets/utils/buildArticleTable";
 import { articleFormFields } from "../assets/fixtures";
 import ArticleModal from "./ArticleModal";
-import { message, Popconfirm, Table } from "antd";
+import { message, Popconfirm, Space, Table } from "antd";
 import { getColumnSearchProps } from "../assets/utils/getColumnSearchProps";
 
 const Articles = () => {
@@ -24,7 +24,7 @@ const Articles = () => {
       title: "",
       key: "action",
       render: (_text, record) => (
-        <>
+        <Space>
           <Popconfirm
             title="Are you sure to delete this article?"
             onConfirm={() => deleteArticle(record.key)}
@@ -40,7 +40,7 @@ const Articles = () => {
             type="edit"
             reloadArticles={reloadArticles}
           />
-        </>
+        </Space>
       ),
     },
 
@@ -96,7 +96,8 @@ const Articles = () => {
         className="table-stripped-rows"
         dataSource={articles}
         columns={columns}
-        pagination={{ pageSize: 5 }}
+        pagination={{ pageSize: 10 }}
+        size="small"
       />
       <ArticleModal
         type="add"

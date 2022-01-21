@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { buildToolTable } from "../assets/utils/buildToolTable";
 import { toolFormFields } from "../assets/fixtures";
 import ToolModal from "./ToolModal";
-import { message, Popconfirm, Table } from "antd";
+import { message, Popconfirm, Space, Table } from "antd";
 
 const Tools = () => {
   const toolListColumns = toolFormFields.map(field => ({
@@ -20,7 +20,7 @@ const Tools = () => {
       title: "",
       key: "action",
       render: (_text, record) => (
-        <>
+        <Space>
           <Popconfirm
             title="Are you sure to delete this tool?"
             onConfirm={() => deleteTool(record.key)}
@@ -36,7 +36,7 @@ const Tools = () => {
             type="edit"
             reloadTools={reloadTools}
           />
-        </>
+        </Space>
       ),
     },
   ];
