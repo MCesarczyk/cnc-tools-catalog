@@ -15,7 +15,7 @@ const Articles = () => {
     filters: field.filters || "",
     onFilter: field.onFilter || "",
     sorter: field.sorter || "",
-    ...getColumnSearchProps(field.search, inputRef)
+    ...getColumnSearchProps(field.search, inputRef, field.name)
   }));
 
   const columns = [
