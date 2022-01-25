@@ -7,7 +7,7 @@ set :branch, "main"
 
 set :pg_without_sudo, false
 set :pg_host, 'localhost'
-set :pg_database, 'cnc_tools_catalog'
+set :pg_database, 'cnc_tools_catalog_production'
 set :pg_username, 'deploy'
 set :pg_ask_for_password, true
 
