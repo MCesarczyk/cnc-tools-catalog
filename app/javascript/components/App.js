@@ -4,6 +4,7 @@ import "antd/dist/antd.css";
 
 export default function App() {
     return (
-        <Router />
+        // <Router />
+        <h1>BYE BYE ANT DESIGN</h1>
     );
 }
