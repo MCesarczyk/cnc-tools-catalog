@@ -1,19 +1,16 @@
 import React from "react";
-import { Layout } from "antd";
-import Header from "./Header";
-const { Content, Footer } = Layout;
+import Header from "./Header/index.js";
+import Footer from "./Footer/index.js";
+import { Wrapper } from "./Wrapper/index.js";
 
 const Home = ({ children }) => (
-    <Layout className="layout">
-        <Header />
-        <Content style={{ padding: "0 50px" }}>
-            <div className="site-layout-content" style={{ margin: "100px auto" }}>
-                <h1>CNC Tools Catalog</h1>
-                {children}
-            </div>
-        </Content>
-        <Footer style={{ textAlign: "center" }}>MCesarczyk ©2021.</Footer>
-    </Layout>
+  <Wrapper>
+    <Header />
+    <h1>CNC TOOLS MANAGER</h1>
+    <h2>UNDER CONSTRUCTION</h2>
+    {/* {children}  */}
+    <Footer />
+  </Wrapper>
 );
 
 export default Home;
