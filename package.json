@@ -28,6 +28,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/plugin-proposal-private-methods": "^7.16.11",
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "webpack-dev-server": "^4.7.1"
   }
 }
